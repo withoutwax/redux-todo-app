@@ -1,4 +1,4 @@
-const addTodoReducer = (state, action) => {
+function addTodoReducer(state, action) {
   if (state === undefined) {
     return state = [];
   }
@@ -12,7 +12,8 @@ const addTodoReducer = (state, action) => {
       //     text: action.text
       //   }
       // ]
-      break;
+    case 'TEST':
+      console.log('This is a test');
     default:
       return state
   }

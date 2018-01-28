@@ -2,34 +2,40 @@ import React, { Component } from 'react';
 
 // Redux
 import { connect } from 'react-redux';
-import { addTodo } from '../actions/index';
+import { bindActionCreators } from 'redux';
+import { addTodo, test } from '../actions/index';
 
 class InputTodo extends Component {
 
   render() {
-    // const { handleSubmit: handleSubmit } = this.props;
-
     return (
-      <form>
-        <lable>Todos:
-          <input type="text" />
-        </lable>
-        <button type="submit" onClick={this.props.addTodoAction()}>Submit</button>
-      </form>
+      <div>
+        <form>
+          <lable>Todos:
+            <input type="text" />
+          </lable>
+          <button type="submit" onClick={this.props.test}>Submit</button>
+        </form>
+        <button onClick={this.props.test}>
+          TEST
+        </button>
+      </div>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addTodoAction: text => {
-      dispatch(addTodo(text))
-    }
-  }
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     addTodoAction: text => {
+//       dispatch(addTodo(text))
+//     }
+//   }
+// }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ addTodoAction: addTodo, testAction: test }, dispatch);
 }
 
-const connectInputTodo = connect(
+export default connect(
   mapDispatchToProps
 )(InputTodo);
-
-export default connectInputTodo;
