@@ -1,19 +1,20 @@
-function addTodoReducer(state, action) {
-  if (state === undefined) {
-    return state = [];
-  }
+const initialState = {
+  text: []
+}
+
+let addTodoReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case 'ADD_TODO':
-      console.log('Adding Todo');
-      // return [
-      //   ...state,
-      //   {
-      //     text: action.text
-      //   }
-      // ]
-    case 'TEST':
-      console.log('This is a test');
+      return [
+        ...state,
+        {
+          text: action.text
+        }
+      ]
+    case 'TEST' :
+      // console.log('This is a test');
+      break;
     default:
       return state
   }

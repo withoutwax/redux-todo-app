@@ -4,7 +4,10 @@ import App from './components/App';
 
 // Redux
 import { Provider } from 'react-redux';
-import store from './store';
+import { createStore } from 'redux';
+import addTodoReducer from './reducers/index';
+
+const store = createStore(addTodoReducer);
 
 ReactDOM.render(
   <Provider store={store}>
