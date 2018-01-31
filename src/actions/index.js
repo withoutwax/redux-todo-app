@@ -1,10 +1,10 @@
 // const ADD_TODO = 'ADD_TODO';
 // const TEST = 'TEST';
 
-export function addTodo(text) {
+export function addTodo(list) {
   return {
     type: 'ADD_TODO',
-    text: text,
+    list,
   };
 }
 
