@@ -21,7 +21,7 @@ class TodoLists extends Component {
 
 function mapStateToProps(state) {
   return {
-    todo: state.todo
+    todo: state.todos,
   }
 }
 

@@ -32,13 +32,13 @@ class InputTodo extends Component {
 
   render() {
     const { handleSubmit } = this.props;
-    console.log(this.props);
+    // console.log(this.props);
 
     let listOfItems;
 
-    if (valueEntered) {
-      listOfItems = this.props.todo.map((items, i) => <li key={i} >{items.text.list}</li>);
-    }
+    // if (valueEntered) {
+    //   listOfItems = this.props.todo.map((items, i) => <li key={i} >{items.text.list}</li>);
+    // }
 
     return (
       <div>

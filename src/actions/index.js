@@ -11,6 +11,13 @@ export function addTodo(text) {
   };
 }
 
+export function initiateList() {
+  return {
+    type: 'INIT_LIST',
+  };
+}
+
+
 export function test() {
   return {
     type: 'TEST',
