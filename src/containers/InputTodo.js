@@ -37,7 +37,7 @@ class InputTodo extends Component {
     let listOfItems;
 
     if (valueEntered) {
-      testlist = this.props.todo.map((items, i) => <li key={i} >{items.text.list}</li>);
+      listOfItems = this.props.todo.map((items, i) => <li key={i} >{items.text.list}</li>);
     }
 
     // listArr.map((currElement, index) => {
