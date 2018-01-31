@@ -3,6 +3,7 @@ import { reducer as formReducer } from 'redux-form';
 
 const initialState = {
   list: [],
+  valueEntered: false,
   test: '',
   testBool: false,
 }

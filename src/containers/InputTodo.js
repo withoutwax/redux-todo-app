@@ -32,7 +32,7 @@ class InputTodo extends Component {
 
   render() {
     const { handleSubmit } = this.props;
-    console.log(this.props.todo);
+    // console.log(this.props.todo);
 
     let listOfItems;
 
