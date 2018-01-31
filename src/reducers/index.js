@@ -3,9 +3,7 @@ import { reducer as formReducer } from 'redux-form';
 
 const initialState = {
   list: [],
-  valueEntered: false,
-  test: '',
-  testBool: false,
+  valueEntered: false
 }
 
 let addTodoReducer = (state = initialState, action) => {
@@ -20,6 +18,19 @@ let addTodoReducer = (state = initialState, action) => {
           completed: false
         }
       ]
+
+    default:
+      return state
+  }
+}
+
+const initialTestState = {
+  test: '',
+  testBool: false,
+}
+
+let testReducer = (state = initialTestState, action) => {
+  switch (action.type) {
     case 'TEST' :
       return Object.assign({}, {test: 'Test is working', testBool: true})
     case 'UNTEST' :
@@ -31,6 +42,7 @@ let addTodoReducer = (state = initialState, action) => {
 
 const rootReducer = combineReducers({
   todos: addTodoReducer,
+  tests: testReducer,
   form: formReducer
 });
 
