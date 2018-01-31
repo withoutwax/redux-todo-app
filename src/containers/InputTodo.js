@@ -8,7 +8,9 @@ import { addTodo, test, untest } from '../actions/index';
 // Redux-form
 import { Field, reduxForm } from 'redux-form';
 
+var valueEntered = false;
 class InputTodo extends Component {
+
 
   // TESTING REDUX
   handleTest() {
@@ -24,11 +26,24 @@ class InputTodo extends Component {
   onSubmit(values) {
     // console.log(values);
     this.props.addTodo(values);
+    valueEntered = true;
+
   }
 
   render() {
     const { handleSubmit } = this.props;
     console.log(this.props.todo);
+
+    let listOfItems;
+
+    if (valueEntered) {
+      testlist = this.props.todo.map((items, i) => <li key={i} >{items.text.list}</li>);
+    }
+
+    // listArr.map((currElement, index) => {
+    //   console.log("The current element: " + currElement);
+    //   console.log("The current index: " + index);
+    // });
     return (
       <div>
         {/* <form onSubmit={this.handleSubmit(input.value)}>
@@ -38,7 +53,7 @@ class InputTodo extends Component {
           <button type="submit">Submit</button>
         </form> */}
         <div>
-          {/* {this.props.list} */}
+          {listOfItems}
         </div>
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <div>

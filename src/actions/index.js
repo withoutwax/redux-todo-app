@@ -1,10 +1,13 @@
 // const ADD_TODO = 'ADD_TODO';
 // const TEST = 'TEST';
 
-export function addTodo(list) {
+let todoId = 0;
+
+export function addTodo(text) {
   return {
     type: 'ADD_TODO',
-    list,
+    id: todoId++,
+    text
   };
 }
 

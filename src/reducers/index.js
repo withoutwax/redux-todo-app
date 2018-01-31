@@ -14,7 +14,9 @@ let addTodoReducer = (state = initialState, action) => {
       return [
         ...state,
         {
-          list: action.list
+          id: action.id,
+          text: action.text,
+          completed: false
         }
       ]
     case 'TEST' :
