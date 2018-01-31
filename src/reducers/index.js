@@ -1,5 +1,6 @@
 const initialState = {
-  text: []
+  text: [],
+  test: ''
 }
 
 let addTodoReducer = (state = initialState, action) => {
@@ -13,8 +14,7 @@ let addTodoReducer = (state = initialState, action) => {
         }
       ]
     case 'TEST' :
-      // console.log('This is a test');
-      break;
+      return Object.assign({}, {test: 'Test is working'})
     default:
       return state
   }

@@ -7,8 +7,8 @@ import { addTodo, test } from '../actions/index';
 
 class InputTodo extends Component {
   handleTest() {
-    // console.log(this.props.test());
     this.props.test();
+    console.log(this.props.test());
   }
 
   handleSubmit(e) {
@@ -25,6 +25,9 @@ class InputTodo extends Component {
           </lable>
           <button type="submit">Submit</button>
         </form> */}
+        <div>
+          {this.props.testState}
+        </div>
         <button onClick={() => {this.handleTest()}}>
           TEST
         </button>
@@ -34,10 +37,16 @@ class InputTodo extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    testState: state.test
+  }
+}
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ addTodo, test }, dispatch);
 }
 
 export default connect(
-  null, mapDispatchToProps
+  mapStateToProps, mapDispatchToProps
 )(InputTodo);
