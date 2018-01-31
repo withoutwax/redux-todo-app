@@ -1,5 +1,8 @@
+import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
+
 const initialState = {
-  text: [],
+  list: [],
   test: '',
   testBool: false,
 }
@@ -11,7 +14,9 @@ let addTodoReducer = (state = initialState, action) => {
       return [
         ...state,
         {
-          text: action.text
+          id: action.id,
+          text: action.text,
+          completed: false
         }
       ]
     case 'TEST' :
@@ -23,4 +28,9 @@ let addTodoReducer = (state = initialState, action) => {
   }
 }
 
-export default addTodoReducer;
+const rootReducer = combineReducers({
+  todos: addTodoReducer,
+  form: formReducer
+});
+
+export default rootReducer;
