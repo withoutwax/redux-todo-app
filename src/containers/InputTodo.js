@@ -8,7 +8,7 @@ import { addTodo, test, untest, initiateList } from '../actions/index';
 // Redux-form
 import { Field, reduxForm } from 'redux-form';
 
-var valueEntered = false;
+// var valueEntered = false;
 
 class InputTodo extends Component {
   // TESTING REDUX
@@ -25,7 +25,7 @@ class InputTodo extends Component {
   onSubmit(values) {
     // console.log(values);
     this.props.addTodo(values);
-    valueEntered = true;
+    // valueEntered = true;
     this.props.initiateList();
 
   }
@@ -42,9 +42,9 @@ class InputTodo extends Component {
 
     return (
       <div>
-        <div>
+        {/* <div>
           {listOfItems}
-        </div>
+        </div> */}
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <div>
             <label>List</label>
