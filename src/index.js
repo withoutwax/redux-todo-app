@@ -5,7 +5,7 @@ import App from './components/App';
 // Redux
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import addTodoReducer from './reducers/index';
+import rootReducer from './reducers/index';
 
 const store = createStore(addTodoReducer);
 

@@ -6,6 +6,12 @@ import { bindActionCreators } from 'redux';
 import { addTodo, test, untest } from '../actions/index';
 
 class InputTodo extends Component {
+
+  handleSubmit(e) {
+
+  }
+
+  // TESTING REDUX
   handleTest() {
     // this.props.test();
     if (!this.props.testBool) {
@@ -14,10 +20,6 @@ class InputTodo extends Component {
       this.props.untest();
     }
     console.log(this.props);
-  }
-
-  handleSubmit(e) {
-
   }
 
   render() {
@@ -37,7 +39,6 @@ class InputTodo extends Component {
           TOGGLE
         </button>
       </div>
-
     );
   }
 }
