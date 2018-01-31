@@ -18,7 +18,6 @@ let addTodoReducer = (state = initialState, action) => {
           completed: false
         }
       ]
-
     default:
       return state
   }
@@ -28,6 +27,8 @@ let initiateList = (state = initialState, action) => {
   switch (action.type) {
     case 'INIT_LIST':
       return Object.assign({}, {listInitiated: true})
+    default:
+      return state
   }
 }
 
@@ -49,7 +50,7 @@ let testReducer = (state = initialTestState, action) => {
 
 const rootReducer = combineReducers({
   todos: addTodoReducer,
-  initList: 
+  initList: initiateList,
   tests: testReducer,
   form: formReducer
 });

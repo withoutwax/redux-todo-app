@@ -3,15 +3,14 @@ import React, { Component } from 'react';
 // Redux
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addTodo, test, untest } from '../actions/index';
+import { addTodo, test, untest, initiateList } from '../actions/index';
 
 // Redux-form
 import { Field, reduxForm } from 'redux-form';
 
 var valueEntered = false;
+
 class InputTodo extends Component {
-
-
   // TESTING REDUX
   handleTest() {
     // console.log(this.props.testState);
@@ -27,6 +26,7 @@ class InputTodo extends Component {
     // console.log(values);
     this.props.addTodo(values);
     valueEntered = true;
+    this.props.initiateList();
 
   }
 
@@ -77,7 +77,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ addTodo, test, untest }, dispatch);
+  return bindActionCreators({ addTodo, test, untest, initiateList }, dispatch);
 }
 
 export default reduxForm({
