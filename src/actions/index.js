@@ -13,3 +13,9 @@ export function test() {
     type: 'TEST',
   };
 }
+
+export function untest() {
+  return {
+    type: 'UNTEST',
+  };
+}

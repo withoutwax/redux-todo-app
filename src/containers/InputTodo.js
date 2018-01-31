@@ -3,12 +3,17 @@ import React, { Component } from 'react';
 // Redux
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addTodo, test } from '../actions/index';
+import { addTodo, test, untest } from '../actions/index';
 
 class InputTodo extends Component {
   handleTest() {
-    this.props.test();
-    console.log(this.props.test());
+    // this.props.test();
+    if (!this.props.testBool) {
+      this.props.test();
+    } else {
+      this.props.untest();
+    }
+    console.log(this.props);
   }
 
   handleSubmit(e) {
@@ -29,7 +34,7 @@ class InputTodo extends Component {
           {this.props.testState}
         </div>
         <button onClick={() => {this.handleTest()}}>
-          TEST
+          TOGGLE
         </button>
       </div>
 
@@ -39,12 +44,13 @@ class InputTodo extends Component {
 
 function mapStateToProps(state) {
   return {
-    testState: state.test
+    testState: state.test,
+    testBool: state.testBool
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ addTodo, test }, dispatch);
+  return bindActionCreators({ addTodo, test, untest }, dispatch);
 }
 
 export default connect(
