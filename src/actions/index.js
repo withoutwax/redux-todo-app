@@ -11,6 +11,13 @@ export function addTodo(text) {
   };
 }
 
+export function removeTodo(text) {
+  return {
+    type: 'REMOVE_TODO',
+    text
+  }
+}
+
 export function initiateList() {
   return {
     type: 'INIT_LIST',
