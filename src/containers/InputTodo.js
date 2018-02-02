@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // Redux
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addTodo, test, untest, initiateList } from '../actions/index';
+import { addTodo, test, untest, initiateList, apiTest } from '../actions/index';
 
 // Redux-form
 import { Field, reduxForm } from 'redux-form';
@@ -22,12 +22,15 @@ class InputTodo extends Component {
   // console.log(this.props.testState.testBool);
   }
 
+  handleApiTest() {
+    
+  }
+
   onSubmit(values) {
     // console.log(values);
     this.props.addTodo(values);
     // valueEntered = true;
     this.props.initiateList();
-
   }
 
   render() {
@@ -64,6 +67,9 @@ class InputTodo extends Component {
         <button onClick={() => {this.handleTest()}}>
           TOGGLE
         </button>
+      <button onClick={() => {this.handleApiTest()}}>
+        API_TEST
+      </button>
       </div>
     );
   }
@@ -77,7 +83,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ addTodo, test, untest, initiateList }, dispatch);
+  return bindActionCreators({ addTodo, test, untest, initiateList, apiTest }, dispatch);
 }
 
 export default reduxForm({

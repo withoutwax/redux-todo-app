@@ -36,3 +36,9 @@ export function untest() {
     type: 'UNTEST',
   };
 }
+
+export function apiTest() {
+  return {
+    type: 'API_TEST',
+  };
+}
