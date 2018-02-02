@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { removeTodo } from '../actions/index';
+import { completeTodo } from '../actions/index';
 
 class TodoLists extends Component {
   handleDelete(i) {
     console.log(i); // ID
+    this.props.completeTodo(i);
   }
 
   render() {
@@ -12,9 +13,13 @@ class TodoLists extends Component {
     let listOfItems;
 
     if (this.props.todo[0] !== undefined) {
-      console.log(this.props.todo[0].text.list);
+      console.log(this.props.todo[0].completed);
       // console.log('test');
-      listOfItems = this.props.todo.map((items, i) => <li key={i} onClick={() => {this.handleDelete(i)}} >{items.text.list}</li>);
+      listOfItems = this.props.todo.map((items, i) => {
+        if (!this.props.todo[i].completed) {
+          return <li key={i} onClick={() => {this.handleDelete(i)}} >{items.text.list}</li>
+        }
+      });
     }
 
     return (
@@ -34,5 +39,5 @@ function mapStateToProps(state) {
 }
 
 export default connect(
-  mapStateToProps, { removeTodo }
+  mapStateToProps, { completeTodo }
 )(TodoLists);

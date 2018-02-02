@@ -18,8 +18,14 @@ let addTodoReducer = (state = initialState, action) => {
           completed: false
         }
       ]
-    case 'REMOVE_TODO':
-      return // Need to make completed: true.
+    case 'COMPLETE_TODO':
+      return [
+        ...state.slice(0, action.id),
+        Object.assign({}, state[action.id], {
+          completed: true
+        }),
+        ...state.slice(action.id + 1)
+      ];
     default:
       return state
   }
