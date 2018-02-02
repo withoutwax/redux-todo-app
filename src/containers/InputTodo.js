@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // Redux
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addTodo, test, untest, initiateList, apiTest } from '../actions/index';
+import { addTodo, test, untest, initiateList, apiTest, axiosCreateList } from '../actions/index';
 
 // Redux-form
 import { Field, reduxForm } from 'redux-form';
@@ -22,6 +22,7 @@ class InputTodo extends Component {
   // console.log(this.props.testState.testBool);
   }
 
+  // API TEST
   handleApiTest() {
     console.log("Ready for API Test!");
     this.props.apiTest();
@@ -33,6 +34,9 @@ class InputTodo extends Component {
     this.props.addTodo(values);
     // valueEntered = true;
     this.props.initiateList();
+
+    // AXIOS POST
+    this.props.axiosCreateList(values);
   }
 
   render() {
@@ -95,7 +99,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ addTodo, test, untest, initiateList, apiTest }, dispatch);
+  return bindActionCreators({ addTodo, test, untest, initiateList, apiTest, axiosCreateList}, dispatch);
 }
 
 export default reduxForm({

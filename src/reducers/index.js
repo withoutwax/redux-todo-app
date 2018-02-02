@@ -56,14 +56,19 @@ let testReducer = (state = initialTestState, action) => {
   }
 }
 
+// APIs
 let apiTest = (state = {}, action) => {
   switch (action.type) {
     case 'API_TEST':
       console.log("REDUCERS!");
       // THIS IS JUST FOR TESTING PURPOSES, NEED TO UPDATE THE CODE.
-      let list =  action.payload.data.data[0].list;
+      let list = action.payload.data.data[0].list;
       console.log(action.payload.data.data[0].list); //This is the pathway to reach a single list of item from the API.
+      console.log(action.payload.data.data[1].list);
       return list
+
+    // case 'CREATE_LIST':
+    //   return
     default:
       return state
   }

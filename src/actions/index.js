@@ -47,3 +47,12 @@ export function apiTest() {
     payload: request
   };
 }
+
+export function axiosCreateList(values) {
+  const request = axios.post(`https://withoutwax-todo-api.herokuapp.com/api/v1/todos/`, values);
+
+  return {
+    type: 'CREATE_LIST',
+    payload: request
+  }
+}
