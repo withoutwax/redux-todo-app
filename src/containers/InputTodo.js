@@ -23,7 +23,9 @@ class InputTodo extends Component {
   }
 
   handleApiTest() {
-    
+    console.log("Ready for API Test!");
+    this.props.apiTest();
+    console.log(this.props);
   }
 
   onSubmit(values) {
@@ -34,6 +36,7 @@ class InputTodo extends Component {
   }
 
   render() {
+    console.log(this.props)
     const { handleSubmit } = this.props;
     // console.log(this.props);
 
@@ -67,9 +70,17 @@ class InputTodo extends Component {
         <button onClick={() => {this.handleTest()}}>
           TOGGLE
         </button>
-      <button onClick={() => {this.handleApiTest()}}>
-        API_TEST
-      </button>
+
+        {/* API TEST */}
+
+        <div>
+          API TEST:
+          {this.props.api.toString()}
+        </div>
+        <button onClick={() => {this.handleApiTest()}}>
+          API_TEST
+        </button>
+
       </div>
     );
   }
@@ -78,7 +89,8 @@ class InputTodo extends Component {
 function mapStateToProps(state) {
   return {
     todo: state.todos,
-    testState: state.tests
+    testState: state.tests,
+    api: state.apis
   }
 }
 

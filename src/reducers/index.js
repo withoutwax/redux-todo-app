@@ -56,10 +56,24 @@ let testReducer = (state = initialTestState, action) => {
   }
 }
 
+let apiTest = (state = {}, action) => {
+  switch (action.type) {
+    case 'API_TEST':
+      console.log("REDUCERS!");
+      // THIS IS JUST FOR TESTING PURPOSES, NEED TO UPDATE THE CODE.
+      let list =  action.payload.data.data[0].list;
+      console.log(action.payload.data.data[0].list); //This is the pathway to reach a single list of item from the API.
+      return list
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   todos: addTodoReducer,
   initList: initiateList,
   tests: testReducer,
+  apis: apiTest,
   form: formReducer
 });
 

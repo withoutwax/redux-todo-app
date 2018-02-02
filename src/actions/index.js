@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 // const ADD_TODO = 'ADD_TODO';
 // const TEST = 'TEST';
 
@@ -38,7 +40,10 @@ export function untest() {
 }
 
 export function apiTest() {
+  const request = axios.get(`https://withoutwax-todo-api.herokuapp.com/api/v1/todos/`);
+
   return {
     type: 'API_TEST',
+    payload: request
   };
 }
