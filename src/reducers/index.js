@@ -3,8 +3,7 @@ import { reducer as formReducer } from 'redux-form';
 
 const initialState = {
   list: [],
-  test: '',
-  testBool: false,
+  listInitiated: false
 }
 
 let addTodoReducer = (state = initialState, action) => {
@@ -19,6 +18,35 @@ let addTodoReducer = (state = initialState, action) => {
           completed: false
         }
       ]
+    case 'COMPLETE_TODO':
+      return [
+        ...state.slice(0, action.id),
+        Object.assign({}, state[action.id], {
+          completed: true
+        }),
+        ...state.slice(action.id + 1)
+      ];
+    default:
+      return state
+  }
+}
+
+let initiateList = (state = initialState, action) => {
+  switch (action.type) {
+    case 'INIT_LIST':
+      return Object.assign({}, {listInitiated: true})
+    default:
+      return state
+  }
+}
+
+const initialTestState = {
+  test: '',
+  testBool: false,
+}
+
+let testReducer = (state = initialTestState, action) => {
+  switch (action.type) {
     case 'TEST' :
       return Object.assign({}, {test: 'Test is working', testBool: true})
     case 'UNTEST' :
@@ -30,6 +58,8 @@ let addTodoReducer = (state = initialState, action) => {
 
 const rootReducer = combineReducers({
   todos: addTodoReducer,
+  initList: initiateList,
+  tests: testReducer,
   form: formReducer
 });
 
