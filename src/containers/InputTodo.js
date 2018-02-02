@@ -11,6 +11,12 @@ import { Field, reduxForm } from 'redux-form';
 // var valueEntered = false;
 
 class InputTodo extends Component {
+  componentDidMount() {
+    console.log("Component Did Mount: ");
+
+    this.props.apiTest();
+  }
+
   // TESTING REDUX
   handleTest() {
     // console.log(this.props.testState);
@@ -32,7 +38,6 @@ class InputTodo extends Component {
   onSubmit(values) {
     // console.log(values);
     this.props.addTodo(values);
-    // valueEntered = true;
     this.props.initiateList();
 
     // AXIOS POST
@@ -44,11 +49,13 @@ class InputTodo extends Component {
     const { handleSubmit } = this.props;
     // console.log(this.props);
 
+    for (var i = 0; i < this.props.api.length; i++) {
+      console.log(this.props.api[i].list);
+    }
+
     let listOfItems;
 
-    // if (valueEntered) {
-    //   listOfItems = this.props.todo.map((items, i) => <li key={i} >{items.text.list}</li>);
-    // }
+    listOfItems = this.props.api.map((items, i) => <li key={i} >{items.list}</li>);
 
     return (
       <div>
@@ -79,7 +86,8 @@ class InputTodo extends Component {
 
         <div>
           API TEST:
-          {this.props.api.toString()}
+          {/* {this.props.api.toString()} OBJECT FORMAT*/}
+          {listOfItems}
         </div>
         <button onClick={() => {this.handleApiTest()}}>
           API_TEST
